@@ -6,5 +6,5 @@ export const login = (userId, password) => {
         console.log(res);
         localStorage.setItem("accessToken", res.data.accessToken);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => alert("로그인에 실패하였습니다. 다시 시도해주세요!"));
 };
