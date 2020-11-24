@@ -19,3 +19,21 @@ export const LoginInput = styled.textarea`
     margin-top : 0.5rem;
     resize: none;
 `;
+
+export const EditButton = styled.button`
+    border : 2px solid #0f4c81;
+    color : #0f4c81;
+    border-radius : 15px;
+    background-color : white;
+    padding : 0.2rem 0.8rem;
+    font-weight : 500;
+    outline : none;
+    cursor : pointer;
+    margin-top : 1rem;
+
+    &:hover {
+        background-color : #0f4c81;
+        color : white;
+        transition : 0.4s;
+    }
+`;

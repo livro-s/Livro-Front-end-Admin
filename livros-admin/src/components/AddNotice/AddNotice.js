@@ -66,7 +66,7 @@ const AddNotice = () => {
           onChange={onChangeNotice}
         ></S.LoginInput>
       </S.InputBox>
-      <button onClick={onEditNotice}>수정</button>
+      <S.EditButton onClick={onEditNotice}>수정</S.EditButton>
       <G.Button notice onClick={onAddNotice}>
         업로드
       </G.Button>
