@@ -8,7 +8,7 @@ export const deleteNotice = (id) => {
     return getClientAccessToken.delete("/admin/notice/" + id)
 };
 
-export const putNotice = (title, content, id) => {
+export const putNotice = (id, title, content) => {
     return getClientAccessToken.put("/admin/notice/" + id, {title, content})
 };
 
