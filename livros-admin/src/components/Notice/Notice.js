@@ -35,7 +35,6 @@ const Notice = () => {
             title={n.title}
             content={n.content}
             date={n.createdAt}
-            setNotice={onEditNotice}
           ></NoticeItem>
         ))}
       </S.NoticeContainer>
