@@ -42,7 +42,7 @@ export const NoticeTextButton = styled.p`
     cursor : pointer;
     font-weight : 500;
     opacity : 0.7;
-    color : ${(props) => (props.delete ? "#0f4c81" : "")};
+    color : ${(props) => (props.delete ? "#0f4c81" : "#000000")};
 
     &:hover {
         opacity : 1;
