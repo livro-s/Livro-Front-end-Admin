@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import DetailNotice from "./DetailNotice";
 
 const index = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <DetailNotice></DetailNotice>
+    </div>
+  );
 };
 
 export default index;

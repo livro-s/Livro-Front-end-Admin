@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import AddNotice from "./AddNotice";
 
 const index = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <AddNotice></AddNotice>
+    </div>
+  );
 };
 
 export default index;

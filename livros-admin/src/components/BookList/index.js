@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import BookList from "./BookList";
 
 const index = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <BookList></BookList>
+    </div>
+  );
 };
 
 export default index;

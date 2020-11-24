@@ -1,12 +1,12 @@
 import React from "react";
-import Notice from "./Notice";
+import Header from "./Header";
 
 const index = () => {
   return (
     <div>
-      <Notice></Notice>
+      <Header></Header>
     </div>
   );
 };
 
-export default Notice;
+export default index;
