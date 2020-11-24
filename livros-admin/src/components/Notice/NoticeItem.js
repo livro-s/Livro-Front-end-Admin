@@ -4,7 +4,6 @@ import { deleteNotice } from "../../api/notice";
 import { Link } from "react-router-dom";
 
 const NoticeItem = ({ id, title, content, date }) => {
-
   const onDeleteNotice = () => {
     deleteNotice(id)
       .then(() => alert("공지 삭제가 완료되었습니다."))
@@ -13,8 +12,16 @@ const NoticeItem = ({ id, title, content, date }) => {
 
   return (
     <S.NoticeItemBox>
-      <S.NoticeTitle>{title}</S.NoticeTitle>
-      <S.NoticeContents>{content}</S.NoticeContents>
+      <Link
+        style={{ textDecoration: "none", color: "#000000" }}
+        to={{
+          pathname: `/notice/${id}`,
+        }}
+      >
+        <S.NoticeTitle>{title}</S.NoticeTitle>
+        <S.NoticeContents>{content}</S.NoticeContents>
+      </Link>
+
       <S.NoticeInfoContainer>
         <S.NoticeInfoBox>
           <S.NoticeInfoContents>
@@ -27,8 +34,8 @@ const NoticeItem = ({ id, title, content, date }) => {
               to={{
                 pathname: `/edit-notice/${id}`,
                 state: {
-                    editTitle : title,
-                    editContent : content
+                  editTitle: title,
+                  editContent: content,
                 },
               }}
             >
