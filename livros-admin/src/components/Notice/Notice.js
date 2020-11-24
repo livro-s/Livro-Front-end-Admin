@@ -3,6 +3,7 @@ import NoticeItem from "./NoticeItem";
 import * as G from "../../assets/style/GlobalStyle";
 import * as S from "../../assets/style/Notice/Notice";
 import { getNotice } from "../../api/notice";
+import { Link } from "react-router-dom";
 
 const Notice = () => {
   const [notice, setNotice] = useState([]);
@@ -44,6 +45,7 @@ const Notice = () => {
         <S.PageBox num>{page}</S.PageBox>
         <S.PageBox onClick={onIncreasePage}>{">"}</S.PageBox>
       </S.NoticeContainer>
+      <Link to="/add-notice"><G.Button>글쓰기</G.Button></Link>
     </G.AllContainer>
   );
 };
