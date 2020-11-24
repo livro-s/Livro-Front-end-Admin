@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NoticeItemBox = styled.div`
     border : 10px solid #F4F7FA;
     border-radius : 8px;
-    width : 19.5rem;
+    width : 17rem;
     height : 28rem;
     padding : 0 1.5rem;
     position : relative;
