@@ -18,4 +18,10 @@ export const Button = styled.button`
     cursor : pointer;
     float : right;
     margin-top : ${(props) => (props.notice ? "3rem" : "")};
+    opacity : 0.7;
+
+    &:hover {
+        opacity : 1;
+        transition : 0.3s;
+    }
 `;
