@@ -36,7 +36,12 @@ const AddNotice = () => {
 
   const onAddNotice = () => {
     addNotice(title, content)
-      .then(() => alert("공지 작성이 완료되었습니다."))
+      .then(() => {
+        alert("공지 작성이 완료되었습니다.");
+        history.push({
+          pathname: "/notice",
+        });
+    })
       .catch(() => alert("공지 작성에 실패했습니다. 다시 시도하세요."));
   };
 
