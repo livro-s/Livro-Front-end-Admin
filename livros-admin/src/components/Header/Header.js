@@ -18,12 +18,12 @@ const Header = () => {
     <S.HeaderContainer>
       <S.HeaderDiv></S.HeaderDiv>
       <S.HeaderBox>
-        <img src={logo} alt="logo"></img>
+        <Link to="/notice"><img src={logo} alt="logo"></img></Link>
       </S.HeaderBox>
 
       <S.HeaderBox menu>
         <Link to="/book-list" style={{textDecoration : "none"}}><S.HeaderMenuText>도서 확인</S.HeaderMenuText></Link>
-        <Link to="notice" style={{textDecoration : "none"}}><S.HeaderMenuText>공지사항</S.HeaderMenuText></Link>
+        <Link to="/notice" style={{textDecoration : "none"}}><S.HeaderMenuText>공지사항</S.HeaderMenuText></Link>
         <G.Button onClick={onLogout}>로그아웃</G.Button>
       </S.HeaderBox>
     </S.HeaderContainer>
