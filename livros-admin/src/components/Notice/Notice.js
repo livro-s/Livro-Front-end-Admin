@@ -30,10 +30,12 @@ const Notice = () => {
       <S.NoticeContainer>
         {notice.map((n) => (
           <NoticeItem
+            key={n.uuid}
             id={n.uuid}
             title={n.title}
             content={n.content}
             date={n.createdAt}
+            setNotice={onEditNotice}
           ></NoticeItem>
         ))}
       </S.NoticeContainer>
