@@ -22,13 +22,17 @@ const Login = () => {
   };
 
   const onLogin = () => {
-    if(localStorage.getItem("accessToken")) 
-    {
-    history.push({
-        pathname: "/notice",
-      });
-    }
-    return login(userId, password)
+    login(userId, password)
+    .then((res) => {
+        console.log(res);
+        localStorage.setItem("accessToken", res.data.accessToken);
+        history.push({
+            pathname: "/notice",
+        });
+    })
+    .catch(() => {
+        alert("로그인에 실패하였습니다. 다시 시도하세요.");
+    })
   };
 
   return (
