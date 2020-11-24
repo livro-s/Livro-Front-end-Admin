@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 const NoticeItem = ({ id, title, content, date }) => {
   const onDeleteNotice = () => {
     deleteNotice(id)
-      .then(() => alert("공지 삭제가 완료되었습니다."))
+      .then(() => {
+        alert("공지 삭제가 완료되었습니다.");
+        setTimeout(() => {
+          window.location.reload();
+        }, 300)
+    })
       .catch(() => alert("공지 삭제에 실패하였습니다. 다시 시도하세요."));
   };
 
