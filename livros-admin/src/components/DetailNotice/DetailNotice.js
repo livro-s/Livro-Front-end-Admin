@@ -3,16 +3,20 @@ import * as G from "../../assets/style/GlobalStyle";
 import * as S from "../../assets/style/Notice/DetailNotice";
 import { detailGetNotice } from "../../api/notice";
 import { useLocation, Link, useHistory } from "react-router-dom";
+import Loading from "../Common/Loading/Loading";
 
 const DetailNotice = () => {
   const history = useHistory();
   const location = useLocation();
   const id = location.pathname.split("/");
   const [notice, setNotice] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     detailGetNotice(id[2])
       .then((res) => {
+        setIsLoading(false);
         setNotice(res.data);
       })
       .catch(() => {
@@ -25,11 +29,12 @@ const DetailNotice = () => {
 
   return (
     <G.AllContainer>
+      {isLoading ? <Loading /> : ""}
       <S.NoticeTitle>{notice.title}</S.NoticeTitle>
       <S.NoticeText>{notice.createdAt}</S.NoticeText>
       <S.NoticeText contents>{notice.content}</S.NoticeText>
       <Link to="/notice">
-        <G.Button>메인으로</G.Button>
+        <G.NoticeButton>메인으로</G.NoticeButton>
       </Link>
     </G.AllContainer>
   );

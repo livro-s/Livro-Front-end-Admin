@@ -4,6 +4,7 @@ import * as N from "../../assets/style/Notice/Notice";
 import * as S from "../../assets/style/BookList/BookList";
 import BookListItem from "./BookListItem";
 import { getRentalInfo, getDelayInfo } from "../../api/book";
+import Loading from "../Common/Loading/Loading";
 
 const BookList = () => {
   const [page, setPage] = useState(1);
@@ -11,6 +12,7 @@ const BookList = () => {
   const [errText, setErrText] = useState(null);
   const [delay, setDelay] = useState(true);
   const [bookState, setBookState] = useState("미연체");
+  const [isLoading, setIsLoading] = useState(false);
 
   let today = new Date();
   let dd = today.getDate();
@@ -18,10 +20,12 @@ const BookList = () => {
   let yyyy = today.getFullYear();
 
   useEffect(() => {
+    setIsLoading(true);
     getNotDelay();
   }, []);
 
   const getNotDelay = () => {
+    setIsLoading(true);
     if (dd < 10) {
       dd = "0" + dd;
     }
@@ -33,17 +37,20 @@ const BookList = () => {
     getRentalInfo(page, today)
       .then((res) => {
         setErrText(null);
+        setIsLoading(false);
         setBook(res.data);
       })
       .catch((err) => {
         if (err.response.status === 400) {
           setBook([]);
+          setIsLoading(false);
           setErrText("더 이상 목록이 없습니다.");
         }
       });
   };
 
   const getDelay = () => {
+    setIsLoading(true);
     if (dd < 10) {
       dd = "0" + dd;
     }
@@ -56,11 +63,13 @@ const BookList = () => {
     getDelayInfo(page, today)
       .then((res) => {
         setErrText(null);
+        setIsLoading(false);
         setBook(res.data);
       })
       .catch((err) => {
         if (err.response.status === 400) {
           setBook([]);
+          setIsLoading(false);
           setErrText("더 이상 목록이 없습니다.");
         }
       });
@@ -103,6 +112,7 @@ const BookList = () => {
 
   return (
     <G.AllContainer>
+      {isLoading ? <Loading /> : ""}
       <S.BookState onClick={onNotDelayList} style={{ color: "#0F4C81" }}>
         미연체 도서
       </S.BookState>

@@ -3,6 +3,7 @@ import * as S from "../../assets/style/Notice/AddNotice";
 import * as G from "../../assets/style/GlobalStyle";
 import { addNotice, putNotice } from "../../api/notice";
 import { useLocation, useHistory } from "react-router-dom";
+import Loading from "../Common/Loading/Loading";
 
 const AddNotice = () => {
   const history = useHistory();
@@ -12,6 +13,8 @@ const AddNotice = () => {
     title: "",
     content: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const { title, content } = inputs;
 
@@ -24,8 +27,10 @@ const AddNotice = () => {
   };
 
   const onEditNotice = () => {
+    setIsLoading(true);
     putNotice(id[2], title, content)
       .then(() => {
+        setIsLoading(false);
         alert("공지 수정이 완료되었습니다.");
         history.push({
           pathname: "/notice",
@@ -35,8 +40,10 @@ const AddNotice = () => {
   };
 
   const onAddNotice = () => {
+    setIsLoading(true);
     addNotice(title, content)
       .then(() => {
+        setIsLoading(false);
         alert("공지 작성이 완료되었습니다.");
         history.push({
           pathname: "/notice",
@@ -47,6 +54,7 @@ const AddNotice = () => {
 
   return (
     <G.AllContainer>
+      {isLoading ? <Loading /> : ""}
       <S.InputBox>
         <S.LoginText>제목</S.LoginText>
         <S.LoginInput

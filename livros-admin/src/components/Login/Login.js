@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import * as S from "../../assets/style/Login/Login";
 import { textLogo, loginAsset } from "../../assets/img";
 import { login } from "../../api/auth";
 import { useHistory } from "react-router-dom";
+import Loading from "../Common/Loading/Loading";
 
 const Login = () => {
   const history = useHistory();
@@ -10,6 +11,7 @@ const Login = () => {
     userId: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const { userId, password } = inputs;
 
@@ -22,21 +24,25 @@ const Login = () => {
   };
 
   const onLogin = () => {
+    setIsLoading(true);
     login(userId, password)
       .then((res) => {
         console.log(res);
+        setIsLoading(false);
         localStorage.setItem("accessToken", res.data.accessToken);
         history.push({
           pathname: "/notice",
         });
       })
       .catch(() => {
+        setIsLoading(false);
         alert("로그인에 실패하였습니다. 다시 시도하세요.");
       });
   };
 
   return (
     <S.LoginContainer>
+      {isLoading ? <Loading /> : ""}
       <S.LoginSection>
         <S.Div>
           <S.LogoSection>
